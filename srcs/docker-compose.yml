@@ -1,0 +1,53 @@
+version: '3'
+
+networks:
+    proche-cnet:
+        name: proche-cnet
+        driver: bridge
+
+services:
+    nginx:
+      build: ./requirements/nginx
+      image: nginx
+      container_name: nginx
+      restart: always
+      ports:
+        - "443:443"
+      networks:
+        - proche-cnet
+
+    wordpress:
+      build: ./requirements/wordpress
+      image: wordpress
+      container_name: wordpress
+      restart: always
+      depends_on:
+        - mariadb
+      networks:
+        - proche-cnet
+      env_file:
+        - .env
+
+    mariadb:
+      build: ./requirements/mariadb
+      image: mariadb
+      container_name: mariadb
+      restart: always
+      networks:
+        - proche-cnet
+      env_file:
+        - .env
+
+volumes:
+    wordpress_volume:
+      driver: local
+      driver_opts:
+        type: none
+        device: /home/proche-c/data/wordpress
+        o: bind
+    mariadb_volume:
+      driver: local
+      driver_opts:
+        type: none
+        device: /home/proche-c/data/wordpress
+        o: bind
