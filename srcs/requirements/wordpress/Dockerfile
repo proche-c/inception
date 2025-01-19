@@ -1,8 +1,8 @@
 FROM debian:11.11
 
 RUN apt-get update && \
-	apt-get -y install php7.4-fpm php7.4-mysqli mariadb-client curl \
-	&& rm -rf /var/lib/apt/lists/*
+	apt-get -y install php7.4-fpm php7.4-mysqli mariadb-client curl &&\
+	rm -rf /var/lib/apt/lists/*
 
 COPY conf/www.conf /etc/php/7.4/fpm/pool.d/
 

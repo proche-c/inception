@@ -1,7 +1,7 @@
-FROM Debian:11.11
+FROM debian:11.11
 
 RUN apt-get update && \
-	apt-get install -y mariadb-server \
+	apt-get install -y mariadb-server &&\
     rm -rf /var/lib/apt/lists/*
 
 COPY ./conf/mariadb.conf /etc/mysql/mariadb.conf.d/50-server.cnf

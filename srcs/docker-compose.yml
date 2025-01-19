@@ -1,4 +1,4 @@
-version: '3'
+
 
 networks:
     proche-cnet:
@@ -23,10 +23,13 @@ services:
       restart: always
       depends_on:
         - mariadb
+        - nginx
       networks:
         - proche-cnet
       env_file:
         - .env
+      volumes:
+        - wordpress_volume:/var/www/html
 
     mariadb:
       build: ./requirements/mariadb
@@ -37,6 +40,8 @@ services:
         - proche-cnet
       env_file:
         - .env
+      volumes:
+        - mariadb_volume:/var/lib/mysql
 
 volumes:
     wordpress_volume:
@@ -49,5 +54,5 @@ volumes:
       driver: local
       driver_opts:
         type: none
-        device: /home/proche-c/data/wordpress
+        device: /home/proche-c/data/mysql
         o: bind
