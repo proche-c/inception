@@ -1,58 +1,60 @@
 
 
 networks:
-    proche-cnet:
-        name: proche-cnet
-        driver: bridge
+		proche-cnet:
+				name: proche-cnet
+				driver: bridge
 
 services:
-    nginx:
-      build: ./requirements/nginx
-      image: nginx
-      container_name: nginx
-      restart: always
-      ports:
-        - "443:443"
-      networks:
-        - proche-cnet
+		nginx:
+			build: ./requirements/nginx
+			image: nginx
+			container_name: nginx
+			restart: always
+			ports:
+				- "443:443"
+			networks:
+				- proche-cnet
+			volumes:
+				- wordpress_volume:/var/www/html 
 
-    wordpress:
-      build: ./requirements/wordpress
-      image: wordpress
-      container_name: wordpress
-      restart: always
-      depends_on:
-        - mariadb
-        - nginx
-      networks:
-        - proche-cnet
-      env_file:
-        - .env
-      volumes:
-        - wordpress_volume:/var/www/html
+		wordpress:
+			build: ./requirements/wordpress
+			image: wordpress
+			container_name: wordpress
+			restart: always
+			depends_on:
+				- mariadb
+				- nginx
+			networks:
+				- proche-cnet
+			env_file:
+				- .env
+			volumes:
+				- wordpress_volume:/var/www/html
 
-    mariadb:
-      build: ./requirements/mariadb
-      image: mariadb
-      container_name: mariadb
-      restart: always
-      networks:
-        - proche-cnet
-      env_file:
-        - .env
-      volumes:
-        - mariadb_volume:/var/lib/mysql
+		mariadb:
+			build: ./requirements/mariadb
+			image: mariadb
+			container_name: mariadb
+			restart: always
+			networks:
+				- proche-cnet
+			env_file:
+				- .env
+			volumes:
+				- mariadb_volume:/var/lib/mysql
 
 volumes:
-    wordpress_volume:
-      driver: local
-      driver_opts:
-        type: none
-        device: /home/proche-c/data/wordpress
-        o: bind
-    mariadb_volume:
-      driver: local
-      driver_opts:
-        type: none
-        device: /home/proche-c/data/mysql
-        o: bind
+		wordpress_volume:
+			driver: local
+			driver_opts:
+				type: none
+				device: /home/proche-c/data/wordpress
+				o: bind
+		mariadb_volume:
+			driver: local
+			driver_opts:
+				type: none
+				device: /home/proche-c/data/mysql
+				o: bind

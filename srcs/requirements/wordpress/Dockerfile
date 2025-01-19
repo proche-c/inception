@@ -13,14 +13,14 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 RUN mkdir -p /run/php
 RUN chmod 755 /run/php
 
-COPY ./tools/create_wp.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/create_wp.sh
+COPY ./tools/wp.sh /usr/local/bin/wp.sh
+RUN chmod +x /usr/local/bin/wp.sh
 
 EXPOSE 9000
 
 WORKDIR /var/www/html/
 
-ENTRYPOINT [ "/usr/local/bin/create_wp.sh" ]
+ENTRYPOINT [ "/usr/local/bin/wp.sh" ]
 
 
 
