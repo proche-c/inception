@@ -62,6 +62,18 @@ WP_USER=...
 WP_USER_PASSWORD=...
 ```
 
-## 🚀 
+## 🚀 Installation & Usage  
+
+1. Clone the repository.
+2. Run:
+ ```bash
+   make
+   ```
+This command will:  
+
++ Build all Docker images via docker-compose.
++ Launch the infrastructure with proper network, volumes, and containers.
+
+3. Open a browser and go to: https://proche-c.42.fr
 
 
