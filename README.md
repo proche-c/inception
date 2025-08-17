@@ -43,7 +43,7 @@ The infrastructure is accessed only via **HTTPS (port 443)** and is reachable th
 
 ## 🔐 Environment Configuration
 
-All environment variables are stored in `.env`:
+All environment variables are stored in `/src/.env`:
 
 ```env
 DOMAIN_NAME="proche-c.42.fr"
