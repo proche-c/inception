@@ -46,20 +46,26 @@ The infrastructure is accessed only via **HTTPS (port 443)** and is reachable th
 All environment variables are stored in `.env`:
 
 ```env
-# Domain
-DOMAIN_NAME=proche-c.42.fr
+DOMAIN_NAME="proche-c.42.fr"
 
-# MariaDB
-MYSQL_ROOT_PASSWORD=...
-MYSQL_DATABASE=...
-MYSQL_USER=...
-MYSQL_PASSWORD=...
+# MARIADB
 
-# WordPress
-WP_ADMIN_USER=...
-WP_ADMIN_PASSWORD=...
-WP_USER=...
-WP_USER_PASSWORD=...
+MYSQL_HOSTNAME=""
+MYSQL_DATABASE=""
+MYSQL_ROOT_USER=""
+MYSQL_ROOT_PASSWORD=""
+MYSQL_USER=""
+MYSQL_PASSWORD=""
+
+# WORDPRESS
+
+WORDPRESS_TITLE=""
+WORDPRESS_ADMIM=""
+WORDPRESS_ADMIM_PASS=""
+WORDPRESS_ADMIM_EMAIL=""
+WORDPRESS_USER="proche-c"
+WORDPRESS_EMAIL=""
+WORDPRESS_USER_PASS=""
 ```
 
 ## 🚀 Installation & Usage  
