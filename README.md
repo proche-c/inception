@@ -1,4 +1,29 @@
-# Inception Project
+# Inception Project  
+
+## ⚠️ Compatibility Notice  
+
+This project is designed to run inside a Linux Virtual Machine (as required by the subject).
+
+On Linux, the data volumes are mounted under:  
+
+```bash
+/home/<login>/data/mysql
+/home/<login>/data/wordpress
+```
+These directories are automatically created by the Makefile:  
+
+```bash
+@mkdir -p /home/<login>/data/mysql
+@mkdir -p /home/<login>/data/wordpress
+```
+
+## ⚠️ On macOS or Windows, these absolute paths do not exist, so the make command will fail.
+If you want to test the project locally on macOS/Windows, you will need to:  
+
+- Update the volume paths in docker-compose.yml to use a relative directory (e.g., ./data/...).
+- Or manually create equivalent folders adapted to your system.
+
+
 
 ## 🧠 Introduction
 
